@@ -1,0 +1,31 @@
+font:
+  size: 14
+
+# Colors (Terminal.app)
+colors:
+  # Default colors
+  primary:
+    background: '#1E1E1E'
+    foreground: '#b6b6b6'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#D6492E'
+    green:   '#42C732'
+    yellow:  '#999900'
+    blue:    '#6A42F6'
+    magenta: '#6B42F7'
+    cyan:    '#00a6b2'
+    white:   '#F1F1F1'
+
+  # Bright colors
+  bright:
+    black:   '#666666'
+    red:     '#e50000'
+    green:   '#00d900'
+    yellow:  '#e5e500'
+    blue:    '#DA97FF'
+    magenta: '#e500e5'
+    cyan:    '#00e5e5'
+    white:   '#e5e5e5'
