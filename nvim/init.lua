@@ -60,6 +60,9 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  -- Tree file explorer pacakge: https://github.com/nvim-tree/nvim-tree.lua
+  use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
+
   -- nvim tree package: https://github.com/romgrk/barbar.nvim
   use 'nvim-tree/nvim-web-devicons'
   use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
@@ -362,6 +365,9 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- Empty nvim-tree setup using defaults
+require("nvim-tree").setup()
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
