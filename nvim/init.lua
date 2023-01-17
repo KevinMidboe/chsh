@@ -61,11 +61,16 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- Tree file explorer pacakge: https://github.com/nvim-tree/nvim-tree.lua
-  use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   -- nvim tree package: https://github.com/romgrk/barbar.nvim
-  use 'nvim-tree/nvim-web-devicons'
-  use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
+  use {'romgrk/barbar.nvim'}
 
   -- Custom color schema
   use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
