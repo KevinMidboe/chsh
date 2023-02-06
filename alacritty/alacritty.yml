@@ -4,4 +4,4 @@ font:
     family: SFMono Nerd Font
 
 # Colors (Terminal.app)
-
+alt_send_esc: false
