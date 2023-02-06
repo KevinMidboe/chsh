@@ -60,7 +60,7 @@ move_config_files () {
     DIR=$( echo $file | cut -d/ -f 1 )
     FILE=$( echo $file | cut -d/ -f 2 )
 
-    mkdir -p "$HOME/$DIR"
+    mkdir -p "$HOME/.config/$DIR"
     cp $file "$HOME/.config/$file"
     COUNT=$((COUNT + 1))
   done <<< $CONFIG_FILES
