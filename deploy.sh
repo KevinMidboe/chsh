@@ -18,6 +18,7 @@ get_input_df_true () {
             * ) echo "Please answer yes or no.";;
         esac
      done
+     echo ""
 }
 
 get_input_df_false () {
@@ -30,6 +31,7 @@ get_input_df_false () {
             * ) echo "Please answer yes or no.";;
         esac
      done
+     echo ""
 }
 
 install_font () {
@@ -37,18 +39,19 @@ install_font () {
     open $PWD/fonts/*
 }
 
+macos_capslock_shortcut() {
+    cp scripts/tbind.sh /usr/local/bin/tbind
+    chmod +x /usr/local/bin/tbind
+    echo "Created tmux capslock keymap command as tbind"
+}
+
 macos_capslock_keymap () {
-    CAPS_KEY=0x700000039
-    F10_KEY=0x700000043
-
-    DATA=$(printf '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":%s,"HIDKeyboardModifierMappingDst":%s}]}' $CAPS_KEY $F10_KEY)
-    hidutil property --set $DATA
-
-    echo "Successfully overwrote CAPS KEY to F10!"
+    macos_capslock_shortcut
+    tbind
 }
 
 get_config_files() {
-  CONFIG_FILES=$(find * -type f -path "**/*" ! -path ".*" ! -path "fonts/*")
+  CONFIG_FILES=$(find * -type f -path "**/*" ! -path ".*" ! -path "fonts/*" ! -path "scripts/*")
 }
 
 move_config_files () {
@@ -71,7 +74,31 @@ move_config_files () {
 move_profile_file () {
   cp .profile $HOME
 
+  source $HOME/.profile
   echo "Moved .profile file!"
+}
+
+install_packages_brew () {
+    declare -a packages=("cmake" "tree" "wget" "jq" "ripgrep" "watch" "tmux" "fish" "gh")
+    echo "Installing ${#packages[@]} packages from brew"
+
+    brew install --quiet "${packages[@]}"
+}
+
+configure_fish () {
+    brew install --quiet fish
+
+    # oh-my-fish does not exist
+    if [ ! -d "$HOME/.local/share/omf" ]; then
+        curl -s "https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install" > install
+
+        fish install --noninteractive
+        rm install
+    else
+        printf "oh-my-fish already configured!\n\n"
+    fi
+
+    source $HOME/.profile
 }
 
 # Promps for installing custom SF Mono font
@@ -83,10 +110,19 @@ if [ $MACOS ]; then
    get_input_df_false "Add custom caps-lock to F10 keymap? (y/N) " macos_capslock_keymap
 fi
 
+get_input_df_true "Add .profile file? (Y/n) " move_profile_file
+
+# Installed common packages from brew
+get_input_df_true "Install brew packages? (Y/n) " install_packages_brew
+
+echo "Configurating fish shell"
+configure_fish
+
 # Get config files to copy info $HOME/.config
 get_config_files
 
 # Prompt copy config files to $HOME
 get_input_df_true "Move config files to $HOME/.config? (Y/n) " move_config_files
 
-move_profile_file
+
+
