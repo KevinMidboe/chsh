@@ -8,6 +8,7 @@ alt_send_esc: false
 
 # New shells should run fish
 shell:
-  program: /opt/homebrew/bin/fish
+  program: /bin/bash
   args:
-    - --login
+    - -c
+    - $SHELL
