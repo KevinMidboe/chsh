@@ -74,7 +74,6 @@ move_config_files () {
 move_profile_file () {
   cp .profile $HOME
 
-  source $HOME/.profile
   echo "Moved .profile file!"
 }
 
@@ -98,7 +97,7 @@ configure_fish () {
         printf "oh-my-fish already configured!\n\n"
     fi
 
-    source $HOME/.profile
+    echo ""
 }
 
 # Promps for installing custom SF Mono font

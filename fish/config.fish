@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-fenv source $HOME/.profile
+source $HOME/.profile
 
 # Common programs
 abbr -a -- vi nvim

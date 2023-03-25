@@ -3,9 +3,9 @@
 export PATH="/usr/local/bin:$PATH"
 
 # Add homebrew arm64 install path if applicable
-if [[ $(uname -m) == "arm64" ]]; then
+if test $(uname -m) = "arm64"
   export PATH="/opt/homebrew/bin:$PATH"
-fi
+end
 
 # MacPorts Installer rddition on 2022-10-31_at_23:07:29: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
