@@ -5,7 +5,12 @@ export PATH="/usr/local/bin:$PATH"
 # MacPorts Installer rddition on 2022-10-31_at_23:07:29: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
+# Homebrew add executable bin file directory
+# to PATH variable.
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Setting PATH for Python 3.11
 # The original version is saved in .zprofile.pysave
 # PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:$PATH"
 # export PATH
+

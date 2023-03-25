@@ -68,6 +68,12 @@ move_config_files () {
   printf "Moved %s config files!\n" $COUNT
 }
 
+move_profile_file () {
+  cp .profile $HOME
+
+  echo "Moved .profile file!"
+}
+
 # Promps for installing custom SF Mono font
 # patched with devicons + more
 get_input_df_false "Install custom font? (y/N) " install_font
@@ -83,3 +89,4 @@ get_config_files
 # Prompt copy config files to $HOME
 get_input_df_true "Move config files to $HOME/.config? (Y/n) " move_config_files
 
+move_profile_file
