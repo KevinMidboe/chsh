@@ -12,3 +12,4 @@ abbr -a -- l 'tree -L 1 -a'
 abbr -a -- ll 'tree -L 2 -a'
 
 # Git (loaded from completions/git.fish)
+source $HOME/.config/fish/completions/git.fish

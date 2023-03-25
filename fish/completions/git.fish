@@ -68,7 +68,6 @@ abbr -a -- ghh 'git help'
 
 abbr -a -- gignore 'git update-index --assume-unchanged'
 abbr -a -- gignored 'git ls-files -v | grep "^[[:lower:]]"'
-abbr -a -- git svn-dcommit-push='git svn dcommit && git push github $(git_main_branch):svntrunk'
 
 abbr -a -- gk '\gitk --all --branches &!'
 abbr -a -- gke '\gitk --all $(git log --walk-reflogs --pretty=%h) &!'
