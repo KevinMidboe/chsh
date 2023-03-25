@@ -96,8 +96,6 @@ configure_fish () {
     else
         printf "oh-my-fish already configured!\n\n"
     fi
-
-    echo ""
 }
 
 # Promps for installing custom SF Mono font
@@ -114,14 +112,14 @@ get_input_df_true "Add .profile file? (Y/n) " move_profile_file
 # Installed common packages from brew
 get_input_df_true "Install brew packages? (Y/n) " install_packages_brew
 
-echo "Configurating fish shell"
-configure_fish
-
 # Get config files to copy info $HOME/.config
 get_config_files
 
 # Prompt copy config files to $HOME
 get_input_df_true "Move config files to $HOME/.config? (Y/n) " move_config_files
+
+echo "Configurating fish shell"
+configure_fish
 
 
 
