@@ -98,6 +98,14 @@ configure_fish () {
     fi
 }
 
+configure_go () {
+    fish -c source $HOME/.profile
+
+    if ( grep -q GOPATH "$HOME/.profile" ) && [ ! -d $GOPATH ]; then
+        mkdir -p $GOPATH $GOPATH/{bin,pkg}
+    fi
+}
+
 # Promps for installing custom SF Mono font
 # patched with devicons + more
 get_input_df_false "Install custom font? (y/N) " install_font
@@ -121,3 +129,4 @@ get_input_df_true "Move config files to $HOME/.config? (Y/n) " move_config_files
 echo "Configurating fish shell"
 configure_fish
 
+configure_go
