@@ -78,7 +78,7 @@ move_profile_file () {
 }
 
 install_packages_brew () {
-    declare -a packages=("cmake" "tree" "wget" "jq" "ripgrep" "watch" "tmux" "fish" "lua-language-server" "node@18" "golang" "gh")
+    declare -a packages=("cmake" "tree" "wget" "httpie" "jq" "ripgrep" "watch" "tmux" "fish" "lua-language-server" "node@18" "golang" "gh")
     echo "Installing ${#packages[@]} packages from brew"
 
     brew install --quiet "${packages[@]}"
