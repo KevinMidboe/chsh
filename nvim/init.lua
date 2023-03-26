@@ -445,18 +445,20 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
-  -- sumneko_lua = {
-  --   Lua = {
-  --     workspace = { checkThirdParty = false },
-  --     telemetry = { enable = false },
-  --   },
-  -- },
+  clangd = {},
+  cssls = {},
+  eslint = {},
+  jsonls = {},
+  golangci_lint_ls = {},
+  gopls = {},
+  lua_ls = {},
+  pyright = {},
+  pylsp = {},
+  rust_analyzer = {},
+  svelte = {},
+  tsserver = {},
+  vimls = {},
+  volar = {},
 }
 
 -- Setup neovim lua configuration
@@ -469,8 +471,20 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Setup mason so it can manage external tooling
 require("mason").setup()
 
-require("mason-lspconfig").setup {
-  ensure_installed = { "cssls", "eslint", "jsonls", "lua_ls", "pylsp", "rust_analyzer", "svelte", "tsserver", "vimls", "volar" },
+-- Configure lspconfig for each server
+local mason_lspconfig = require 'mason-lspconfig'
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
+}
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = servers[server_name],
+    }
+  end,
 }
 
 -- Turn on lsp status information
