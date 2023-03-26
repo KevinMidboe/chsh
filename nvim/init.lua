@@ -452,7 +452,6 @@ local servers = {
   golangci_lint_ls = {},
   gopls = {},
   lua_ls = {},
-  pyright = {},
   pylsp = {},
   rust_analyzer = {},
   svelte = {},
