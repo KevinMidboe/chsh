@@ -15,3 +15,8 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:$PATH"
 # export PATH
 
+# Setting go environment
+export GOPATH=$HOME/dev/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
+
